@@ -109,7 +109,7 @@ valid_lines = 0
 possible_rel_works_count = [] 
 with open(read_file, 'r+') as f:
   for counter in tqdm.tqdm(range(MAX_PROC), disable = True):
-    line = f.readline();
+    line = f.readline()
 
     if not line:
         break
@@ -122,7 +122,8 @@ with open(read_file, 'r+') as f:
       valid_lines += 1
       unit = {}
       unit['paper_id'] = paper_dict['paper_id']
-      unit['related_work'] = blob['text']
+      unit['related_work'] = blob
+      unit['bib_entries'] = paper_dict['bib_entries']
 
       candidate_sections = get_following_sections(paper_dict['body_text'])
       possible_rel_works = get_rel_work(candidate_sections, blob)
